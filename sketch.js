@@ -27,31 +27,39 @@ function setup() {
 function draw() {
   if(gamestate == PLAY){
     background(0 , 0 , 0); 
+    fill(255);
+    text("Score : " + snakeLength , 10 , 20);
   Engine.update(engine); 
   rectMode(CENTER);
   bug.display("red");
   snakeHead.display("white");
-  
-  if(keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40){
-    if( keyCode === 37 && control != 0){
-      value = 37;
-      control = 0;
+  /*for(var i = 5;i<=695;i+=10){
+    for(var j = 5;j<=695;j+=10){
+      fill(255 , 0 , 0);
+      rectMode(CENTER);
+      rect(i , j , 2 , 2);
     }
-    else if( keyCode === 38&& control != 1){
-      value = 38;
-      control = 1;
-    }
-    else if( keyCode === 39&& control != 0){
-      value = 39;
-      control = 0;
-    }
-    else if( keyCode === 40&& control != 1){
-      value = 40;
-      control = 1;
-    }
-  }
+  }  */
   framecount++;
   if(framecount%4 === 0){
+    if(keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40){
+      if( keyCode === 37 && control != 0){
+        value = 37;
+        control = 0;
+      }
+      else if( keyCode === 38&& control != 1){
+        value = 38;
+        control = 1;
+      }
+      else if( keyCode === 39&& control != 0){
+        value = 39;
+        control = 0;
+      }
+      else if( keyCode === 40&& control != 1){
+        value = 40;
+        control = 1;
+      }
+    }
     if( value === 37){
       Matter.Body.setPosition(snakeHead.body , {x: snakeHead.body.position.x-10 , y: snakeHead.body.position.y});
     }
